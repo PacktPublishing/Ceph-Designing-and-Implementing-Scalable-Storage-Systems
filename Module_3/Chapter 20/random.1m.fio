@@ -1,0 +1,26 @@
+[global]
+ioengine=libaio
+direct=1
+group_reporting
+
+filename=/dev/sda
+
+[sequential-fill]
+description=Sequential fill phase
+rw=write
+iodepth=16
+bs=4M
+
+[random-write-steady]
+stonewall
+description=Random write steady state phase
+rw=randwrite
+bs=1M
+iodepth=32
+numjobs=4
+time_based
+runtime=345600
+write_bw_log=fio-write-bw
+write_lat_log=fio-write-lat
+write_iops_log=fio-write-iops
+log_avg_msec=1000
