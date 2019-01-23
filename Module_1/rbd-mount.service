@@ -1,0 +1,12 @@
+[Unit]
+Description=RADOS block device mapping for $rbdimage in pool $poolname"
+Conflicts=shutdown.target
+Wants=network-online.target
+After=NetworkManager-wait-online.service
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/rbd-mount m
+ExecStop=/usr/local/bin/rbd-mount u
+[Install]
+WantedBy=multi-user.target

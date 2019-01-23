@@ -1,0 +1,6 @@
+export OS_USERNAME=admin
+export OS_TENANT_NAME=admin
+export OS_PASSWORD=9234dcf967454a48
+export OS_AUTH_URL=http://192.168.1.111:5000/v2.0/
+export OS_REGION_NAME=RegionOne
+export PS1='[\u@\h \W(keystone_admin)]\$ '

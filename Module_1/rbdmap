@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Pool name where block device image is stored
+export poolname=rbd
+ 
+# Disk image name
+export rbdimage=rbd1
+ 
+# Mounted Directory
+export mountpoint=/mnt/ceph-disk1
+ 
+# Image mount/unmount and pool are passed from the systemd service as arguments
+# Are we are mounting or unmounting
+if [ "$1" == "m" ]; then
+   modprobe rbd
+   rbd feature disable $rbdimage object-map fast-diff deep-flatten
+   rbd map $rbdimage --id rbd --keyring /etc/ceph/ceph.client.rbd.keyring
+   mkdir -p $mountpoint
+   mount /dev/rbd/$poolname/$rbdimage $mountpoint
+fi
+if [ "$1" == "u" ]; then
+   umount $mountpoint
+   rbd unmap /dev/rbd/$poolname/$rbdimage
+fi

@@ -1,0 +1,147 @@
+Vagrant.require_version ">= 1.4.3"
+VAGRANTFILE_API_VERSION = "2"
+
+BOX='centos7-standard'
+BOX_URL='https://www.dropbox.com/s/hiarmp3cdzjy94o/centos7-standard.box?dl=1'
+
+vsm_controller= 'vsm-controller'
+
+vsm_node1= 'vsm-node1'
+vsm_node1_disk2 = './vsm-node1/vsm-node1_disk2.vdi'
+vsm_node1_disk3 = './vsm-node1/vsm-node1_disk3.vdi'
+vsm_node1_disk4 = './vsm-node1/vsm-node1_disk4.vdi'
+
+vsm_node2= 'vsm-node2'
+vsm_node2_disk2 = './vsm-node2/vsm-node2_disk2.vdi'
+vsm_node2_disk3 = './vsm-node2/vsm-node2_disk3.vdi'
+vsm_node2_disk4 = './vsm-node2/vsm-node2_disk4.vdi'
+
+vsm_node3= 'vsm-node3'
+vsm_node3_disk2 = './vsm-node3/vsm-node3_disk2.vdi'
+vsm_node3_disk3 = './vsm-node3/vsm-node3_disk3.vdi'
+vsm_node3_disk4 = './vsm-node3/vsm-node3_disk4.vdi'
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+##################################### Configuration for vsm-node1 #############################################
+
+                 config.vm.define :"vsm-node1" do |node1|
+                        node1.vm.box = BOX
+                        node1.vm.box_url = BOX_URL
+                        node1.vm.network :private_network, ip: "192.168.123.101"
+                        node1.vm.hostname = vsm_node1
+                        node1.vm.synced_folder ".", "/vagrant", disabled: true
+			            node1.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+                        node1.vm.provision "shell", path: "post-deploy.sh" ,run: "always"
+                        node1.vm.provider "virtualbox" do |v|
+
+                                v.customize ["modifyvm", :id, "--memory", "1024"]
+                                v.name = vsm_node1
+				                v.gui = true
+                                unless File.exist?(vsm_node1_disk2)
+                                v.customize ['createhd', '--filename', vsm_node1_disk2, '--size', 1 * 20480]
+                                v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', vsm_node1_disk2]
+                                end
+
+                                unless File.exist?(vsm_node1_disk3)
+                                v.customize ['createhd', '--filename', vsm_node1_disk3,'--size', 1 * 20480]
+                                v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', vsm_node1_disk3]
+                                end
+
+                                unless File.exist?(vsm_node1_disk4)
+                                v.customize ['createhd', '--filename', vsm_node1_disk4,'--size', 1 * 20480]
+                                v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 3, '--device', 0, '--type', 'hdd', '--medium', vsm_node1_disk4]
+                                end
+
+                        end
+
+                end
+                
+##################################### Configuration for vsm-node2 #############################################
+
+                 config.vm.define :"vsm-node2" do |node2|
+                        node2.vm.box = BOX
+                        node2.vm.box_url = BOX_URL
+                        node2.vm.network :private_network, ip: "192.168.123.102"
+                        node2.vm.hostname = vsm_node2
+                        node2.vm.synced_folder ".", "/vagrant", disabled: true
+                        node2.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+                        node2.vm.provision "shell", path: "post-deploy.sh" ,run: "always"
+                        node2.vm.provider "virtualbox" do |v|
+
+                                v.customize ["modifyvm", :id, "--memory", "1024"]
+                                v.name = vsm_node2
+                                v.gui = true
+                                unless File.exist?(vsm_node2_disk2)
+                                v.customize ['createhd', '--filename', vsm_node2_disk2, '--size', 1 * 20480]
+                                v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', vsm_node2_disk2]
+                                end
+
+                                unless File.exist?(vsm_node2_disk3)
+                                v.customize ['createhd', '--filename', vsm_node2_disk3,'--size', 1 * 20480]
+                                v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', vsm_node2_disk3]
+                                end
+
+                                unless File.exist?(vsm_node2_disk4)
+                                v.customize ['createhd', '--filename', vsm_node2_disk4,'--size', 1 * 20480]
+                                v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 3, '--device', 0, '--type', 'hdd', '--medium', vsm_node2_disk4]
+                                end
+
+                        end
+
+                end
+
+##################################### Configuration for vsm-node3 #############################################
+
+                 config.vm.define :"vsm-node3" do |node3|
+                        node3.vm.box = BOX
+                        node3.vm.box_url = BOX_URL
+                        node3.vm.network :private_network, ip: "192.168.123.103"
+                        node3.vm.hostname = vsm_node3
+                        node3.vm.synced_folder ".", "/vagrant", disabled: true
+                        node3.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+                        node3.vm.provision "shell", path: "post-deploy.sh" ,run: "always"
+                        node3.vm.provider "virtualbox" do |v|
+
+                                v.customize ["modifyvm", :id, "--memory", "1024"]
+                                v.name = vsm_node3
+                                v.gui = true
+                                unless File.exist?(vsm_node3_disk2)
+                                v.customize ['createhd', '--filename', vsm_node3_disk2, '--size', 1 * 20480]
+                                v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', vsm_node3_disk2]
+                                end
+
+                                unless File.exist?(vsm_node3_disk3)
+                                v.customize ['createhd', '--filename', vsm_node3_disk3,'--size', 1 * 20480]
+                                v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', vsm_node3_disk3]
+                                end
+
+                                unless File.exist?(vsm_node3_disk4)
+                                v.customize ['createhd', '--filename', vsm_node3_disk4,'--size', 1 * 20480]
+                                v.customize ['storageattach', :id,  '--storagectl', 'SATA', '--port', 3, '--device', 0, '--type', 'hdd', '--medium', vsm_node3_disk4]
+                                end
+
+                        end
+
+                end
+
+##################################### Configuration for vsm-controller ######################################
+
+                 config.vm.define :"vsm-controller" do |controller|
+                        controller.vm.box = BOX
+                        controller.vm.box_url = BOX_URL
+                        controller.vm.network :private_network, ip: "192.168.123.100"
+                        controller.vm.hostname = vsm_controller
+                        controller.vm.synced_folder ".", "/vagrant", disabled: true
+                        controller.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+                        controller.vm.provision "shell", path: "post-deploy.sh" ,run: "always"
+                        controller.vm.provider "virtualbox" do |v|
+                                v.customize ["modifyvm", :id, "--memory", "1024"]
+                                v.name = vsm_controller
+                                v.gui = true
+                        end
+
+                end
+                
+###############################################################################################################
+end
