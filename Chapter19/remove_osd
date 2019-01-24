@@ -1,0 +1,92 @@
+#!/bin/bash
+
+# This script is provided as a reference for the readers of Learning Ceph (second edition)
+# It has been used successfully thousands of times but is by no means perfect, general, or future-proof.
+# In fact it's a bit dated.  But it does show the overall process for deleting an OSD and cleaning up.
+# The typecode on the FileStore partition is adjusted to prevent udev from trying to remount it
+# Because XFS can horque the OS if it tries to mount a corrupt filesystem.
+# But we might want to poke around later, especially if the OSD was removed by accident.
+# The cluster name is assumed to be 'ceph' and FileStore is assumed as well.
+# The service management commands may need adjusted for your distribution.
+# Quando Omni Flunkus Moritati
+# Your mileage may vary.
+# Use at your own risk.  Much fault tolerance could be added.
+
+# Anthony would like to thank Michael Kidd and Mike DeSimone for their contributions.
+
+
+
+if [ $# -lt 1 ]; then
+  echo "Usage: `basename $0` <OSD number>"
+  exit 1
+fi
+typeset -i osdtorm=$1
+
+typeset    MONSTART=""
+typeset    OSDCMD=""
+typeset    FACTER=$(which facter 2>/dev/null)
+typeset    OSFamily=""
+
+# The facter package may not be installed on the system.  Rather than
+# failing, when the packge was insalled, we should use the vendor file in
+# /etc/ directory to determine the OS family.
+
+if [ "X$FACTER" != "X" ]; then
+  OSFamily=$($FACTER osfamily)
+else
+  if [ -f /etc/lsb-release ]; then
+    OSFamily=Debian
+  elif [ -f /etc/redhat-release ]; then
+    OSFamily=RedHat
+  fi
+fi
+
+case $OSFamily in
+  RedHat)
+    MONSTART="sysvinit"
+    OSDCMD="/etc/init.d/ceph stop osd.${osdtorm}"
+    ;;
+  Debian)
+    MONSTART="upstart"
+    OSDCMD="stop ceph-osd id=${osdtorm}"
+    ;;
+  *)
+    echo "Neither Ubuntu nor Redhat is detected, exiting."
+    exit 1
+esac
+
+echo -n "Finding host.. "
+
+remhost=$(ceph osd find $osdtorm 2>/dev/null | grep host | awk '{print $NF}' | sed -e s/[\",]//g)
+if [ "x${remhost}" == "x" ]; then
+  echo Failed: osd.$osdtorm does not exist.
+  exit 1
+else
+  echo $remhost
+
+  # TODO: These commands  should perhaps be done in a subshell or other method to act appropriate in case they hang.
+
+  ssh -o ConnectTimeout=20 $remhost -- "echo -n 'Stopping osd.$osdtorm: '; ${OSDCMD}; sleep 7 ; echo -n 'Removing $MONSTART flag: '; rm -f /var/lib/ceph/osd/ceph-$osdtorm/$MONSTART; echo done; remdrive=\$(mount | grep \"ceph-$osdtorm \" | awk '{print \$1}'); echo -n \"Umounting $remdrive: \"; umount \$remdrive; echo done; echo -n \"Removing mount point : \"; rm -rf /var/lib/ceph/osd/ceph-$osdtorm; echo done; echo -n \"Set partition typecode : \"; sgdisk --typecode=1:89c57f98-2fe5-4dc0-89c1-f3ad0ceff2be --partition-guid=$(uuidgen -r) $remdrive; echo done"
+
+  echo -n "Removing CRUSH entry for osd.$osdtorm: "
+  ceph osd crush remove osd.$osdtorm
+  # If it isn't down on its own yet, hedge our bet
+  ceph osd down osd.$osdtorm
+  echo -n "Removing OSD entry for osd.$osdtorm: "
+  ceph osd rm osd.$osdtorm
+  echo -n "Removing Auth for osd.$osdtorm: "
+  ceph auth del osd.$osdtorm
+
+  echo "Please run 'ceph -w' or 'watch ceph -s' to monitor for rebalancing to complete"
+fi
+
+exit 0
+
+# Reference:  the typecodes that Ceph uses.
+
+#JOURNAL_UUID =         '45b0969e-9b03-4f30-b4c6-b4b80ceff106'
+#DMCRYPT_JOURNAL_UUID = '45b0969e-9b03-4f30-b4c6-5ec00ceff106'
+#OSD_UUID =             '4fbd7e29-9d25-41b8-afd0-062c0ceff05d'
+#DMCRYPT_OSD_UUID =     '4fbd7e29-9d25-41b8-afd0-5ec00ceff05d'
+#TOBE_UUID =            '89c57f98-2fe5-4dc0-89c1-f3ad0ceff2be'
+#DMCRYPT_TOBE_UUID =    '89c57f98-2fe5-4dc0-89c1-5ec00ceff2be'
