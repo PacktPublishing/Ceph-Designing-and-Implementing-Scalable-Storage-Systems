@@ -1,0 +1,17 @@
+collectd_use_ppa: yes
+collectd_use_ppa_latest: yes
+collectd_ppa_source: 'deb http://pkg.ci.collectd.org/deb xenial collectd-5.7'
+
+collectd_write_graphite: yes 
+collectd_write_graphite_options:
+  Host: "ansible"
+  Port: 2003
+  Prefix: collectd.
+  # Postfix: .collectd
+  Protocol: tcp
+  AlwaysAppendDS: false
+  EscapeCharacter: _
+  LogSendErrors: true
+  StoreRates: true
+  SeparateInstances: true
+  PreserveSeparator: true
