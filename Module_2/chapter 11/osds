@@ -1,3 +1,0 @@
-devices:
-  - /dev/sdb
-journal_collocation: true
