@@ -3,7 +3,7 @@ This Learning Path takes you through the basics of Ceph all the way to gaining i
 
 By the end of this Learning Path, you'll have the practical knowledge of operating Ceph in a production environment.
 <br>
-# Ceph Designing and Implementing Scalable Storage Systems by **Anthony D'Atri, Vaibhav Bhembre, Karan Singh, Nick Fisk, Michael Hackett and Vikhyat Umrao**
+# Ceph Designing and Implementing Scalable Storage Systems by **Michael Hackett, Vikhyat Umrao, Karan Singh, Nick Fisk, Anthony D'Atri and Vaibhav Bhembre**
 
 ## What you will learn
 * Understand the benefits of using Ceph as a storage solution
@@ -13,6 +13,9 @@ By the end of this Learning Path, you'll have the practical knowledge of operati
 * Configure BlueStore and see its interaction with other configurations
 * Tune, monitor, and recover storage systems effectively
 * Build an erasure-coded pool by selecting intelligent parameters
+
+## Instructions and Navigations
+* All of the code is organized into folders. Chapter5, Chapter6, Chapter7, Chapter8, Chapter10, Chapter12, Chapter13, Chapter15, Chapter17, Chapter18 does not contain code files.
 
 ### Hardware Requirements
 For an optimal student experience, we recommend the following hardware configuration:
