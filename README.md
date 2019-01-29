@@ -1,9 +1,12 @@
 # Ceph Designing and Implementing Scalable Storage Systems
-This Learning Path takes you through the basics of Ceph all the way to gaining in-depth understanding of its advanced features. You’ll gather skills to plan, deploy, and manage your Ceph cluster. After an introduction to the Ceph architecture and its core projects, you’ll be able to set up a Ceph cluster and learn how to monitor its health, improve its performance, and troubleshoot any issues. By following the step-by-step approach of this Learning Path, you’ll learn how Ceph integrates with OpenStack, Glance, Manila, Swift, and Cinder. With knowledge of federated architecture and CephFS, you’ll use Calamari and VSM to monitor the Ceph environment. In the upcoming chapters, you’ll study the key areas of Ceph, including BlueStore, erasure coding, and cache tiering. More specifically, you’ll discover what they can do for your storage system. In the concluding chapters, you will develop applications that use Librados and distributed computations with shared object classes, and see how Ceph and its supporting infrastructure can be optimized. 
+This Learning Path takes you through the basics of Ceph all the way to gaining in-depth understanding of its advanced features. You’ll gather skills to plan, deploy, and manage your Ceph cluster. After an introduction to the Ceph architecture and its core projects, you’ll be able to set up a Ceph cluster and learn how to monitor its health, improve its performance, and troubleshoot any issues. 
 
-By the end of this Learning Path, you'll have the practical knowledge of operating Ceph in a production environment.
+By following the step-by-step approach of this Learning Path, you’ll learn how Ceph integrates with OpenStack, Glance, Manila, Swift, and Cinder. With knowledge of federated architecture and CephFS, you’ll use Calamari and VSM to monitor the Ceph environment. In the upcoming chapters, you’ll study the key areas of Ceph, including BlueStore, erasure coding, and cache tiering. More specifically, you’ll discover what they can do for your storage system. 
+
+In the concluding chapters, you will develop applications that use Librados and distributed computations with shared object classes, and see how Ceph and its supporting infrastructure can be optimized. By the end of this Learning Path, you'll have the practical knowledge of operating Ceph in a production environment.
 <br>
-# Ceph Designing and Implementing Scalable Storage Systems by **Michael Hackett, Vikhyat Umrao, Karan Singh, Nick Fisk, Anthony D'Atri and Vaibhav Bhembre**
+
+# Ceph Designing and Implementing Scalable Storage Systems by *Michael Hackett, Vikhyat Umrao, Karan Singh, Nick Fisk, Anthony D'Atri and Vaibhav Bhembre*
 
 ## What you will learn
 * Understand the benefits of using Ceph as a storage solution
