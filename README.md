@@ -27,18 +27,18 @@ For an optimal student experience, we recommend the following hardware configura
 You'll also need the following software installed in advance:
 * **OS**: Windows 7 SP1 64-bit, Windows 8.1 64-bit or Windows 10 64-bit
 * **Browser**: Google Chrome, Latest Version
-* VirtualBox 4.0 or higher (https://www.virtualbox.org/wiki/Downloads)
-* GIT (http://www.git- scm.com/downloads)
-* CentOS operating system 7.0 or higher (http://wiki.centos.org/Download)
-* Ceph software Jewel packages Version 10.2.0 or higher (http://ceph.com/resources/downloads/)
-* S3 Client, typically S3cmd (http://s3tools.org/download)
+* [VirtualBox 4.0](https://www.virtualbox.org/wiki/Downloads)
+* [GIT] (http://www.git- scm.com/downloads)
+* [CentOS operating system 7.0] (http://wiki.centos.org/Download)
+* [Ceph software Jewel packages Version 10.2.0] (http://ceph.com/resources/downloads/)
+* [S3 Client] (http://s3tools.org/download)
 * Python-swift client
 * NFS Ganesha
 * Ceph Fuse
-* CephMetrics (https://github.com/ceph/cephmetrics
-* Ceph-Medic (https://github.com/ceph/ceph-medic)
-* Virtual Storage Manager 2.0 or higher (https://github.com/01org/virtualstoragemanager/releases/tag/v2.1.0)
-* Ceph-Ansible (https://github.com/ceph/ceph-ansible)
-* OpenStack RDO (http://rdo.fedorapeople.org/rdo-release.rpm)
+* [CephMetrics] (https://github.com/ceph/cephmetrics
+* [Ceph-Medic] (https://github.com/ceph/ceph-medic)
+* [Virtual Storage Manager 2.0] (https://github.com/01org/virtualstoragemanager/releases/tag/v2.1.0)
+* [Ceph-Ansible] (https://github.com/ceph/ceph-ansible)
+* [OpenStack RDO] (http://rdo.fedorapeople.org/rdo-release.rpm)
 
 
