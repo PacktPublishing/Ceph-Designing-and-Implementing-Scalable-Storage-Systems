@@ -6,7 +6,7 @@ By following the step-by-step approach of this Learning Path, you’ll learn how
 In the concluding chapters, you will develop applications that use Librados and distributed computations with shared object classes, and see how Ceph and its supporting infrastructure can be optimized. By the end of this Learning Path, you'll have the practical knowledge of operating Ceph in a production environment.
 <br>
 
-# Ceph Designing and Implementing Scalable Storage Systems by ***Michael Hackett, Vikhyat Umrao, Karan Singh, Nick Fisk, Anthony D'Atri and Vaibhav Bhembre***
+# Ceph Designing and Implementing Scalable Storage Systems by **Michael Hackett, Vikhyat Umrao, Karan Singh, Nick Fisk, Anthony D'Atri and Vaibhav Bhembre**
 
 ## What you will learn
 * Understand the benefits of using Ceph as a storage solution
