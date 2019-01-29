@@ -6,7 +6,7 @@ By following the step-by-step approach of this Learning Path, you’ll learn how
 In the concluding chapters, you will develop applications that use Librados and distributed computations with shared object classes, and see how Ceph and its supporting infrastructure can be optimized. By the end of this Learning Path, you'll have the practical knowledge of operating Ceph in a production environment.
 <br>
 
-# Ceph Designing and Implementing Scalable Storage Systems by *Michael Hackett, Vikhyat Umrao, Karan Singh, Nick Fisk, Anthony D'Atri and Vaibhav Bhembre*
+# Ceph Designing and Implementing Scalable Storage Systems by ***Michael Hackett, Vikhyat Umrao, Karan Singh, Nick Fisk, Anthony D'Atri and Vaibhav Bhembre***
 
 ## What you will learn
 * Understand the benefits of using Ceph as a storage solution
@@ -31,7 +31,7 @@ You'll also need the following software installed in advance:
 * **OS**: Windows 7 SP1 64-bit, Windows 8.1 64-bit or Windows 10 64-bit
 * **Browser**: Google Chrome, Latest Version
 * VirtualBox 4.0(https://www.virtualbox.org/wiki/Downloads)
-* GIT (http://www.git- scm.com/downloads)
+* GIT (http://www.git-scm.com/downloads)
 * CentOS operating system 7.0 (http://wiki.centos.org/Download)
 * Ceph software Jewel packages Version 10.2.0 (http://ceph.com/resources/downloads/)
 * S3 Client (http://s3tools.org/download)
