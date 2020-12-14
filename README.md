@@ -1,3 +1,8 @@
+## $5 Tech Unlocked 2021!
+[Buy and download this Course for only $5 on PacktPub.com](https://www.packtpub.com/product/ceph-designing-and-implementing-scalable-storage-systems/9781788295413)
+-----
+*The $5 campaign         runs from __December 15th 2020__ to __January 13th 2021.__*
+
 # Ceph Designing and Implementing Scalable Storage Systems
 This Learning Path takes you through the basics of Ceph all the way to gaining in-depth understanding of its advanced features. You’ll gather skills to plan, deploy, and manage your Ceph cluster. After an introduction to the Ceph architecture and its core projects, you’ll be able to set up a Ceph cluster and learn how to monitor its health, improve its performance, and troubleshoot any issues. 
 
