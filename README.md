@@ -1,3 +1,15 @@
+
+### Get this product for $5
+
+<i>Packt is having its biggest sale of the year. Get this eBook or any other book, video, or course that you like just for $5 each</i>
+
+
+<b><p align='center'>[Buy now](https://packt.link/9781788295413)</p></b>
+
+
+<b><p align='center'>[Buy similar titles for just $5](https://subscription.packtpub.com/search)</p></b>
+
+
 # Ceph Designing and Implementing Scalable Storage Systems
 This Learning Path takes you through the basics of Ceph all the way to gaining in-depth understanding of its advanced features. You’ll gather skills to plan, deploy, and manage your Ceph cluster. After an introduction to the Ceph architecture and its core projects, you’ll be able to set up a Ceph cluster and learn how to monitor its health, improve its performance, and troubleshoot any issues. 
 
